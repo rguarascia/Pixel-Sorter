@@ -1,0 +1,9 @@
+h:\documents\visual studio 2012\Projects\Pixel Sorter\Pixel Sorter\bin\Debug\Pixel Sorter.exe.config
+h:\documents\visual studio 2012\Projects\Pixel Sorter\Pixel Sorter\bin\Debug\Pixel Sorter.exe
+h:\documents\visual studio 2012\Projects\Pixel Sorter\Pixel Sorter\bin\Debug\Pixel Sorter.pdb
+h:\documents\visual studio 2012\Projects\Pixel Sorter\Pixel Sorter\obj\Debug\Pixel Sorter.csprojResolveAssemblyReference.cache
+h:\documents\visual studio 2012\Projects\Pixel Sorter\Pixel Sorter\obj\Debug\Pixel_Sorter.frmMain.resources
+h:\documents\visual studio 2012\Projects\Pixel Sorter\Pixel Sorter\obj\Debug\Pixel_Sorter.Properties.Resources.resources
+h:\documents\visual studio 2012\Projects\Pixel Sorter\Pixel Sorter\obj\Debug\Pixel Sorter.csproj.GenerateResource.Cache
+h:\documents\visual studio 2012\Projects\Pixel Sorter\Pixel Sorter\obj\Debug\Pixel Sorter.exe
+h:\documents\visual studio 2012\Projects\Pixel Sorter\Pixel Sorter\obj\Debug\Pixel Sorter.pdb
