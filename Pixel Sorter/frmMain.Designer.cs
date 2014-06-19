@@ -40,7 +40,7 @@
             this.picDisplay.Location = new System.Drawing.Point(161, 12);
             this.picDisplay.Name = "picDisplay";
             this.picDisplay.Size = new System.Drawing.Size(810, 470);
-            this.picDisplay.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picDisplay.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picDisplay.TabIndex = 0;
             this.picDisplay.TabStop = false;
             // 
@@ -62,6 +62,7 @@
             this.btnSort.TabIndex = 2;
             this.btnSort.Text = "Sort Pixels";
             this.btnSort.UseVisualStyleBackColor = true;
+            this.btnSort.Click += new System.EventHandler(this.btnSort_Click);
             // 
             // btnSave
             // 

@@ -7,3 +7,11 @@ h:\documents\visual studio 2012\Projects\Pixel Sorter\Pixel Sorter\obj\Debug\Pix
 h:\documents\visual studio 2012\Projects\Pixel Sorter\Pixel Sorter\obj\Debug\Pixel Sorter.csproj.GenerateResource.Cache
 h:\documents\visual studio 2012\Projects\Pixel Sorter\Pixel Sorter\obj\Debug\Pixel Sorter.exe
 h:\documents\visual studio 2012\Projects\Pixel Sorter\Pixel Sorter\obj\Debug\Pixel Sorter.pdb
+C:\Users\Ryan\Documents\GitHub\Pixel-Sorter\Pixel Sorter\bin\Debug\Pixel Sorter.exe.config
+C:\Users\Ryan\Documents\GitHub\Pixel-Sorter\Pixel Sorter\bin\Debug\Pixel Sorter.exe
+C:\Users\Ryan\Documents\GitHub\Pixel-Sorter\Pixel Sorter\bin\Debug\Pixel Sorter.pdb
+C:\Users\Ryan\Documents\GitHub\Pixel-Sorter\Pixel Sorter\obj\Debug\Pixel_Sorter.frmMain.resources
+C:\Users\Ryan\Documents\GitHub\Pixel-Sorter\Pixel Sorter\obj\Debug\Pixel_Sorter.Properties.Resources.resources
+C:\Users\Ryan\Documents\GitHub\Pixel-Sorter\Pixel Sorter\obj\Debug\Pixel Sorter.csproj.GenerateResource.Cache
+C:\Users\Ryan\Documents\GitHub\Pixel-Sorter\Pixel Sorter\obj\Debug\Pixel Sorter.exe
+C:\Users\Ryan\Documents\GitHub\Pixel-Sorter\Pixel Sorter\obj\Debug\Pixel Sorter.pdb

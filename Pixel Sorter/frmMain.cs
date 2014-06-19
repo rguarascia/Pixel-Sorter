@@ -27,5 +27,11 @@ namespace Pixel_Sorter
 
             picDisplay.Image = sort.sorterImg(userImg);
         }
+
+        private void btnSort_Click(object sender, EventArgs e)
+        {
+            PixelSorter sortMe = new PixelSorter();
+            sortMe.sorterImg(userImg);
+        }
     }
 }

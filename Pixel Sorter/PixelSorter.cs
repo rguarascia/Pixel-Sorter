@@ -12,7 +12,8 @@ namespace Pixel_Sorter
 {
     class PixelSorter
     {
-        List<Color> pixelColours;
+        List<Color> alikePixels;
+        List<Color> currentPixel;
         public Bitmap sorterImg(Bitmap currentImage)
         {
             Bitmap sortThis = currentImage;
@@ -20,51 +21,52 @@ namespace Pixel_Sorter
             BitmapData pixelData = new BitmapData();
             #region LockBits
             IntPtr Pointer;
-
             pixelData = sortThis.LockBits(new Rectangle(0, 0, sortThis.Width, sortThis.Height), ImageLockMode.ReadWrite, PixelFormat.Format32bppArgb);
-
             Pointer = pixelData.Scan0;
-
             int ArraySize = Math.Abs(pixelData.Stride) * sortThis.Height;
-
             byte[] PixelArray = new byte[ArraySize];
-
             Marshal.Copy(Pointer, PixelArray, 0, ArraySize);
-
             int PixelAmount = 4; //Argb
 
-            pixelColours = new List<Color>();
 
+            alikePixels = new List<Color>();
+            currentPixel = new List<Color>();
+
+            List<Color>pixelRow = new List<Color>();
+            List<Color>pixelCol = new List<Color>();
+
+            long res = 0;
+            bool flipflop = false;
             unsafe
             {
                 for (int y = 0; y < pixelData.Height; y++)
                 {
                     byte* row = (byte*)pixelData.Scan0 + (y * pixelData.Stride);
-
                     for (int x = 0; x < pixelData.Width; x++)
                     {
-                        int offSet = x * PixelAmount;
-
-                        //List of all the colours, going from left to right, then down.
-                        pixelColours.Add(Color.FromArgb(row[offSet + 3], row[offSet + 2], row[offSet + 1], row[offSet]));
-
+                        int offSet = x * (PixelAmount / 2);
+                        res++;
+                        if (flipflop)
+                        {
+                            pixelRow.Add(Color.FromArgb(row[offSet]));
+                        }
+                        else
+                        {
+                            pixelCol.Add(Color.FromArgb(row[offSet]));
+                        }
                     }
                 }
+                MessageBox.Show("Total Pixels: " + res.ToString());
             }
             #endregion
             sortThis.UnlockBits(pixelData);
             return sortThis;
         }
 
-        private void sorter(int imgWidth, int imgHeight)
+        private bool checkPixels(int pix1, int pix2)
         {
-            for (int y = 0; y < imgHeight; y++)
-            {
-                for (int x = 0; x < imgWidth; x++)
-                {
-                    //Sort.
-                }
-            }
+            float temp = Math.Abs(pix1 - pix2) / 256;
+            return temp < 42;
         }
     }
 }
