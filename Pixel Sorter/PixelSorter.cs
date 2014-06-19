@@ -32,8 +32,8 @@ namespace Pixel_Sorter
             alikePixels = new List<Color>();
             currentPixel = new List<Color>();
 
-            List<Color>pixelRow = new List<Color>();
-            List<Color>pixelCol = new List<Color>();
+            List<Color> pixelRow = new List<Color>();
+            List<Color> pixelCol = new List<Color>();
 
             long res = 0;
             bool flipflop = false;
@@ -49,13 +49,20 @@ namespace Pixel_Sorter
                         if (flipflop)
                         {
                             pixelRow.Add(Color.FromArgb(row[offSet]));
+                            flipflop = !flipflop;
                         }
                         else
                         {
                             pixelCol.Add(Color.FromArgb(row[offSet]));
+                            flipflop = true;
                         }
                     }
                 }
+                //This guy does not want to work
+                if (checkPixels(pixelCol[0].B, pixelRow[0].B) && (checkPixels(pixelCol[0].G, pixelRow[0].G)) && (checkPixels(pixelCol[0].R, pixelRow[0].R)))
+                    MessageBox.Show("Close");
+                else
+                    MessageBox.Show("Not even");
                 MessageBox.Show("Total Pixels: " + res.ToString());
             }
             #endregion
@@ -65,8 +72,7 @@ namespace Pixel_Sorter
 
         private bool checkPixels(int pix1, int pix2)
         {
-            float temp = Math.Abs(pix1 - pix2) / 256;
-            return temp < 42;
+            return Math.Abs(pix1 - pix2) / 256 < 42;
         }
     }
 }
