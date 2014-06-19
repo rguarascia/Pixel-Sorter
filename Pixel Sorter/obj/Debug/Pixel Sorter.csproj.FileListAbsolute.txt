@@ -15,3 +15,4 @@ C:\Users\Ryan\Documents\GitHub\Pixel-Sorter\Pixel Sorter\obj\Debug\Pixel_Sorter.
 C:\Users\Ryan\Documents\GitHub\Pixel-Sorter\Pixel Sorter\obj\Debug\Pixel Sorter.csproj.GenerateResource.Cache
 C:\Users\Ryan\Documents\GitHub\Pixel-Sorter\Pixel Sorter\obj\Debug\Pixel Sorter.exe
 C:\Users\Ryan\Documents\GitHub\Pixel-Sorter\Pixel Sorter\obj\Debug\Pixel Sorter.pdb
+C:\Users\Ryan\Documents\GitHub\Pixel-Sorter\Pixel Sorter\obj\Debug\Pixel Sorter.csprojResolveAssemblyReference.cache

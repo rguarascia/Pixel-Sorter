@@ -36,7 +36,7 @@ namespace Pixel_Sorter
             List<Color> pixelCol = new List<Color>();
 
             long res = 0;
-            bool flipflop = false;
+            bool flipflop = true;
             unsafe
             {
                 for (int y = 0; y < pixelData.Height; y++)
@@ -44,26 +44,26 @@ namespace Pixel_Sorter
                     byte* row = (byte*)pixelData.Scan0 + (y * pixelData.Stride);
                     for (int x = 0; x < pixelData.Width; x++)
                     {
-                        int offSet = x * (PixelAmount / 2);
+                        int offSet = x * PixelAmount;
                         res++;
                         if (flipflop)
                         {
-                            pixelRow.Add(Color.FromArgb(row[offSet]));
+                            pixelRow.Add(Color.FromArgb(row[offSet + 3], row[offSet + 2], row[offSet + 1], row[offSet]));
                             flipflop = !flipflop;
                         }
                         else
                         {
-                            pixelCol.Add(Color.FromArgb(row[offSet]));
+                            pixelCol.Add(Color.FromArgb(row[offSet + 3], row[offSet + 2], row[offSet + 1], row[offSet]));
                             flipflop = true;
                         }
                     }
                 }
-                //This guy does not want to work
-                if (checkPixels(pixelCol[0].B, pixelRow[0].B) && (checkPixels(pixelCol[0].G, pixelRow[0].G)) && (checkPixels(pixelCol[0].R, pixelRow[0].R)))
-                    MessageBox.Show("Close");
-                else
-                    MessageBox.Show("Not even");
-                MessageBox.Show("Total Pixels: " + res.ToString());
+                MessageBox.Show("Total Pixels: " + res.ToString() + " Number of pixels in Row " + pixelRow.Count.ToString() + " Number of pixels in Col " + pixelCol.Count.ToString());
+                //Sloppy joe
+                for (int x = 0; x < pixelCol.Count; x++)
+                    MessageBox.Show(pixelCol[x].ToString());
+                for (int x = 0; x < pixelRow.Count; x++)
+                    MessageBox.Show(pixelRow[x].ToString());
             }
             #endregion
             sortThis.UnlockBits(pixelData);
@@ -74,5 +74,7 @@ namespace Pixel_Sorter
         {
             return Math.Abs(pix1 - pix2) / 256 < 42;
         }
+
+
     }
 }
