@@ -6,20 +6,26 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
+using System.Diagnostics;
 using System.Windows.Forms; //Strictly for debugging 
 
+
+//Ryan Guarasica
+//June, 20, 2014
+//A pixel sorter and placement arranger
 namespace Pixel_Sorter
 {
     class PixelSorter
     {
-        List<Color> alikePixels;
-        List<Color> currentPixel;
-        public Bitmap sorterImg(Bitmap currentImage)
+        int sendMeOver;
+        public Bitmap sorterImg(string currentPath, int sortMethod)
         {
-            Bitmap sortThis = currentImage;
-
+            List<byte> bluePix = new List<byte>();
+            List<byte> redPix = new List<byte>();
+            List<byte> greenPix = new List<byte>();
+            sendMeOver = 0;
+            Bitmap sortThis = new Bitmap(currentPath);
             BitmapData pixelData = new BitmapData();
-            #region LockBits
             IntPtr Pointer;
             pixelData = sortThis.LockBits(new Rectangle(0, 0, sortThis.Width, sortThis.Height), ImageLockMode.ReadWrite, PixelFormat.Format32bppArgb);
             Pointer = pixelData.Scan0;
@@ -28,15 +34,10 @@ namespace Pixel_Sorter
             Marshal.Copy(Pointer, PixelArray, 0, ArraySize);
             int PixelAmount = 4; //Argb
 
-
-            alikePixels = new List<Color>();
-            currentPixel = new List<Color>();
-
-            List<Color> pixelRow = new List<Color>();
-            List<Color> pixelCol = new List<Color>();
-
-            long res = 0;
-            bool flipflop = true;
+            int res = 0;
+            redPix.Clear();
+            greenPix.Clear();
+            bluePix.Clear();
             unsafe
             {
                 for (int y = 0; y < pixelData.Height; y++)
@@ -45,27 +46,46 @@ namespace Pixel_Sorter
                     for (int x = 0; x < pixelData.Width; x++)
                     {
                         int offSet = x * PixelAmount;
+
+                        switch (sortMethod)
+                        {
+                            case 0:
+
+                                bluePix.Add(row[offSet]);
+                                greenPix.Add(row[offSet + 1]);
+                                redPix.Add(row[offSet + 2]);
+
+                                row[offSet] = bluePix[res];
+                                row[offSet + 1] = greenPix[res];
+                                row[offSet + 2] = redPix[res];
+                                break;
+
+                            case 1:
+                                bluePix.Add(row[offSet]);
+                                greenPix.Add(row[offSet + 1]);
+                                redPix.Add(row[offSet + 2]);
+
+                                row[offSet] = bluePix[x * y];
+                                row[offSet + 1] = greenPix[x * y];
+                                row[offSet + 2] = redPix[x * y];
+                                break;
+
+                            case 2:
+                                bluePix.Add(row[offSet]);
+                                greenPix.Add(row[offSet + 1]);
+                                redPix.Add(row[offSet + 2]);
+
+                                row[offSet] = bluePix[res / 2];
+                                row[offSet + 1] = greenPix[res / 2];
+                                row[offSet + 2] = redPix[res / 2];
+                                break;
+
+                        }
                         res++;
-                        if (flipflop)
-                        {
-                            pixelRow.Add(Color.FromArgb(row[offSet + 3], row[offSet + 2], row[offSet + 1], row[offSet]));
-                            flipflop = !flipflop;
-                        }
-                        else
-                        {
-                            pixelCol.Add(Color.FromArgb(row[offSet + 3], row[offSet + 2], row[offSet + 1], row[offSet]));
-                            flipflop = true;
-                        }
                     }
                 }
-                MessageBox.Show("Total Pixels: " + res.ToString() + " Number of pixels in Row " + pixelRow.Count.ToString() + " Number of pixels in Col " + pixelCol.Count.ToString());
-                //Sloppy joe
-                for (int x = 0; x < pixelCol.Count; x++)
-                    MessageBox.Show(pixelCol[x].ToString());
-                for (int x = 0; x < pixelRow.Count; x++)
-                    MessageBox.Show(pixelRow[x].ToString());
+                sendMeOver = res;
             }
-            #endregion
             sortThis.UnlockBits(pixelData);
             return sortThis;
         }
@@ -75,6 +95,9 @@ namespace Pixel_Sorter
             return Math.Abs(pix1 - pix2) / 256 < 42;
         }
 
-
+        public int Res()
+        {
+            return sendMeOver;
+        }
     }
 }

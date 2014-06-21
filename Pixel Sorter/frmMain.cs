@@ -12,7 +12,8 @@ namespace Pixel_Sorter
 {
     public partial class frmMain : Form
     {
-        Bitmap userImg;
+
+        string imagePath;
         PixelSorter sort = new PixelSorter();
         public frmMain()
         {
@@ -23,15 +24,25 @@ namespace Pixel_Sorter
         {
             OpenFileDialog getImg = new OpenFileDialog();
             if (getImg.ShowDialog() == DialogResult.OK)
-                userImg = new Bitmap(getImg.FileName);
+                imagePath = getImg.FileName;
 
-            picDisplay.Image = sort.sorterImg(userImg);
+            lblRes.Text = "Res: " + sort.Res().ToString();
         }
 
         private void btnSort_Click(object sender, EventArgs e)
         {
             PixelSorter sortMe = new PixelSorter();
-            sortMe.sorterImg(userImg);
+            if (radSort.Checked)
+                picDisplay.Image = sortMe.sorterImg(imagePath, 0);
+            else if (radRandom.Checked)
+               picDisplay.Image = sortMe.sorterImg(imagePath, 1);
+            else
+                 picDisplay.Image = sortMe.sorterImg(imagePath, 2);
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            picDisplay.Image.Save("Edited-Space.png");
         }
     }
 }

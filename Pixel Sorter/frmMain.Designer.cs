@@ -32,6 +32,10 @@
             this.btnImport = new System.Windows.Forms.Button();
             this.btnSort = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
+            this.lblRes = new System.Windows.Forms.Label();
+            this.radSort = new System.Windows.Forms.RadioButton();
+            this.radRandom = new System.Windows.Forms.RadioButton();
+            this.radZoom = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.picDisplay)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,12 +76,59 @@
             this.btnSave.TabIndex = 3;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // lblRes
+            // 
+            this.lblRes.AutoSize = true;
+            this.lblRes.Location = new System.Drawing.Point(12, 438);
+            this.lblRes.Name = "lblRes";
+            this.lblRes.Size = new System.Drawing.Size(32, 13);
+            this.lblRes.TabIndex = 4;
+            this.lblRes.Text = "Res: ";
+            // 
+            // radSort
+            // 
+            this.radSort.AutoSize = true;
+            this.radSort.Checked = true;
+            this.radSort.Location = new System.Drawing.Point(15, 133);
+            this.radSort.Name = "radSort";
+            this.radSort.Size = new System.Drawing.Size(80, 17);
+            this.radSort.TabIndex = 5;
+            this.radSort.TabStop = true;
+            this.radSort.Text = "Normal Sort";
+            this.radSort.UseVisualStyleBackColor = true;
+            // 
+            // radRandom
+            // 
+            this.radRandom.AutoSize = true;
+            this.radRandom.Location = new System.Drawing.Point(15, 156);
+            this.radRandom.Name = "radRandom";
+            this.radRandom.Size = new System.Drawing.Size(90, 17);
+            this.radRandom.TabIndex = 6;
+            this.radRandom.TabStop = true;
+            this.radRandom.Text = "Pixel Random";
+            this.radRandom.UseVisualStyleBackColor = true;
+            // 
+            // radZoom
+            // 
+            this.radZoom.Location = new System.Drawing.Point(15, 179);
+            this.radZoom.Name = "radZoom";
+            this.radZoom.Size = new System.Drawing.Size(140, 30);
+            this.radZoom.TabIndex = 7;
+            this.radZoom.TabStop = true;
+            this.radZoom.Text = "Pixel Zoom (suggested for large images)";
+            this.radZoom.UseVisualStyleBackColor = true;
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(983, 500);
+            this.Controls.Add(this.radZoom);
+            this.Controls.Add(this.radRandom);
+            this.Controls.Add(this.radSort);
+            this.Controls.Add(this.lblRes);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnSort);
             this.Controls.Add(this.btnImport);
@@ -86,6 +137,7 @@
             this.Text = "Pixel Sorter";
             ((System.ComponentModel.ISupportInitialize)(this.picDisplay)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -95,6 +147,10 @@
         private System.Windows.Forms.Button btnImport;
         private System.Windows.Forms.Button btnSort;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Label lblRes;
+        private System.Windows.Forms.RadioButton radSort;
+        private System.Windows.Forms.RadioButton radRandom;
+        private System.Windows.Forms.RadioButton radZoom;
     }
 }
 
